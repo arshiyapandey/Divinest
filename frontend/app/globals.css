@@ -1,24 +1,30 @@
-/* Tailwind import */
-@import "tailwindcss";
-
-/* Import Google Fonts */
+/* =========================
+   Google Fonts (MUST be at top)
+========================= */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
 
-/* Brand colors */
+/* =========================
+   Tailwind
+========================= */
+@import "tailwindcss";
+
+/* =========================
+   Root Variables (Theme)
+========================= */
 :root {
-  --brand-primary: #520202;  /* Dark Maroon */
+  --brand-primary: #520202;   /* Dark Maroon */
   --brand-secondary: #FFD8A0; /* Warm Beige */
 
-  /* Background/Text */
   --background: var(--brand-primary);
   --foreground: var(--brand-secondary);
 
-  /* Fonts */
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
 }
 
-/* Apply globally */
+/* =========================
+   Global Styles
+========================= */
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -28,17 +34,34 @@ body {
   padding: 0;
 }
 
-/* Headings */
+/* =========================
+   Headings
+========================= */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--foreground);
   margin: 0;
 }
 
-/* Links */
+/* =========================
+   Links
+========================= */
 a {
   color: var(--foreground);
   text-decoration: none;
 }
 
-/* Optional: Buttons, etc. will inherit body font by default */
+/* =========================
+   Utility Enhancements (Optional but clean)
+========================= */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better image defaults */
+img {
+  max-width: 100%;
+  display: block;
+}

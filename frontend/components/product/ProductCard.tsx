@@ -1,27 +1,24 @@
-type ProductProps = {
-  name: string;
-  price: string;
-  image: string;
-};
+"use client";
 
-export default function ProductCard({ name, price, image }: ProductProps) {
+import { useRouter } from "next/navigation";
+import { Product } from "@/features/products/types";
+
+export default function ProductCard({ product }: { product: Product }) {
+  const router = useRouter();
+
   return (
-    <div className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-
+    <div
+      onClick={() => router.push(`/product/${product.id}`)}
+      className="border rounded-xl p-4 hover:shadow-md transition cursor-pointer"
+    >
       <img
-        src={image}
-        alt={name}
-        className="w-full h-60 object-cover rounded-md"
+        src={product.image}
+        alt={product.name}
+        className="w-full h-40 object-cover rounded-md"
       />
 
-      <h3 className="mt-4 text-lg font-semibold text-secondary">
-        {name}
-      </h3>
-
-      <p className="text-gray-700 mt-1">
-        {price}
-      </p>
-
+      <h2 className="mt-3 font-medium">{product.name}</h2>
+      <p className="text-gray-600">₹{product.price}</p>
     </div>
   );
 }
