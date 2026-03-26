@@ -1,0 +1,44 @@
+/* Tailwind import */
+@import "tailwindcss";
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Brand colors */
+:root {
+  --brand-primary: #520202;  /* Dark Maroon */
+  --brand-secondary: #FFD8A0; /* Warm Beige */
+
+  /* Background/Text */
+  --background: var(--brand-primary);
+  --foreground: var(--brand-secondary);
+
+  /* Fonts */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Apply globally */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Links */
+a {
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+/* Optional: Buttons, etc. will inherit body font by default */
