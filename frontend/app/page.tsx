@@ -1,10 +1,15 @@
 import ProductCard from "@/components/product/ProductCard";
+import CartInfo from "@/components/CartInfo";
 import { products } from "@/features/products/data/products";
 
 export default function Home() {
   return (
     <main>
-      {/* HERO */}
+
+      
+      <CartInfo />
+
+      {/* HERO SECTION */}
       <section className="flex flex-col items-center justify-center h-[80vh] bg-primary text-center">
         <h1 className="text-6xl font-bold text-secondary mb-6">
           Welcome to Divinest
@@ -40,13 +45,14 @@ export default function Home() {
 
         <p className="max-w-3xl mx-auto text-lg text-secondary leading-relaxed">
           <i>
-            At Divinest, we curate spiritual essentials that bring serenity,
-            devotion, and divine energy into your home. Every piece - from Akhand Diyas to meditative Jaap Countersand 
-            serene Shivling Smoke Fountains—is thoughtfully selected to inspire mindfulness andelevate your sacred space.
-            Our mission is to make your home a sanctuary where tradition , peace, and spirituality meet aesthetic elegance
+            At Divinest, we curate spiritual essentials that bring serenity, devotion, and divine energy into your home.
+             Every piece—from handcrafted Akhand Diyas to meditative Jaap Counters and serene Shivling Smoke Fountains
+              —is thoughtfully selected to inspire mindfulness and elevate your sacred space.Our mission is to make your
+               home a sanctuary where tradition, peace, and spirituality meet aesthetic elegance.
           </i>
         </p>
       </section>
+
     </main>
   );
 }
