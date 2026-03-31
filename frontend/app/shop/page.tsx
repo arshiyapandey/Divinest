@@ -2,7 +2,7 @@
 
 import { useProducts } from "@/features/products/hooks/useProducts";
 import ProductCard from "@/components/product/ProductCard";
-import CartInfo from "@/components/CartInfo"; // ✅ ADD THIS
+
 
 export default function ShopPage() {
   const { products, loading } = useProducts();
@@ -11,9 +11,6 @@ export default function ShopPage() {
 
   return (
     <div className="p-6">
-
-      {/* ✅ ADD THIS */}
-      <CartInfo />
 
       <h1 className="text-2xl font-semibold mb-6">Shop</h1>
 

@@ -1,5 +1,4 @@
 import ProductCard from "@/components/product/ProductCard";
-import CartInfo from "@/components/CartInfo";
 import { products } from "@/features/products/data/products";
 
 export default function Home() {
@@ -7,7 +6,7 @@ export default function Home() {
     <main>
 
       
-      <CartInfo />
+     
 
       {/* HERO SECTION */}
       <section className="flex flex-col items-center justify-center h-[80vh] bg-primary text-center">

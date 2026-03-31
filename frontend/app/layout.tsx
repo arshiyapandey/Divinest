@@ -1,23 +1,10 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import Navbar from "@/components/layout/Navbar";
 
-import Navbar from "../components/layout/Navbar";
-import AnnouncementBar from "../components/layout/AnnouncementBar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Divinest",
-  description: "Divinest E-commerce Store",
+  description: "Premium E-commerce Store",
 };
 
 export default function RootLayout({
@@ -27,12 +14,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-       <AnnouncementBar />
-<Navbar />
-{children}
+      <body className="bg-white text-black">
+        
+        {/* Top Bar */}
+        <AnnouncementBar />
+
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Main Content */}
+        <main className="min-h-screen">
+          {children}
+        </main>
 
       </body>
     </html>
