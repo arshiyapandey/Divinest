@@ -66,7 +66,7 @@ export const useCartStore = create<CartStore>()(
         })),
     }),
     {
-      name: "cart-storage", // key in localStorage
+      name: "cart-storage", 
     }
   )
 );

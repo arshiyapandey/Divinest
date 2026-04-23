@@ -1,3 +1,4 @@
+// HOME Page//
 import ProductCard from "@/components/product/ProductCard";
 import { products } from "@/features/products/data/products";
 
