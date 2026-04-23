@@ -1,19 +1,12 @@
-/* =========================
-   Google Fonts (MUST be at top)
-========================= */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
-
-/* =========================
-   Tailwind
-========================= */
 @import "tailwindcss";
 
 /* =========================
    Root Variables (Theme)
 ========================= */
 :root {
-  --brand-primary: #520202;   /* Dark Maroon */
-  --brand-secondary: #FFD8A0; /* Warm Beige */
+  --brand-primary: #520202;
+  --brand-secondary: #FFD8A0;
 
   --background: var(--brand-primary);
   --foreground: var(--brand-secondary);
@@ -22,9 +15,8 @@
   --font-body: 'Inter', sans-serif;
 }
 
-/* =========================
-   Global Styles
-========================= */
+
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -51,9 +43,6 @@ a {
   text-decoration: none;
 }
 
-/* =========================
-   Utility Enhancements (Optional but clean)
-========================= */
 
 /* Smooth scrolling */
 html {
