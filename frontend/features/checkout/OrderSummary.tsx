@@ -1,37 +1,94 @@
-export default function OrderSummary() {
+import PrimaryButton from "@/components/ui/PrimaryButton";
+
+type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+};
+
+export default function OrderSummary({ items }: { items: CartItem[] }) {
+  const total = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
   return (
     <div
       style={{
-        border: "1px solid #ddd",
-        padding: "20px",
-        borderRadius: "10px",
+        border: "1px solid rgba(255,255,255,0.2)",
+        padding: "24px",
+        borderRadius: "12px",
+        backgroundColor: "rgba(255,255,255,0.05)",
+        color: "#f5e9e2",
       }}
     >
-      <h2 style={{ marginBottom: "15px" }}>Order Summary</h2>
+      <h2 style={{ marginBottom: "20px" }}>Order Summary</h2>
 
-      <div style={{ marginBottom: "10px" }}>
-        <p>Product 1 x 2</p>
-        <p>Product 2 x 1</p>
-      </div>
+      {items.length === 0 ? (
+        <p style={{ opacity: 0.7 }}>Your cart is empty</p>
+      ) : (
+        items.map((item) => (
+          <div
+            key={item.id}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "15px",
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
+              paddingBottom: "10px",
+            }}
+          >
+            {/* LEFT */}
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <img
+                src={item.image}
+                alt={item.name}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover",
+                  borderRadius: "6px",
+                }}
+              />
 
-      <hr />
+              <div>
+                <p style={{ margin: 0, fontSize: "14px" }}>
+                  {item.name}
+                </p>
+                <p style={{ margin: 0, fontSize: "12px", opacity: 0.7 }}>
+                  Qty: {item.quantity}
+                </p>
+              </div>
+            </div>
 
-      <h3 style={{ marginTop: "10px" }}>Total: ₹500</h3>
+            {/* RIGHT */}
+            <p style={{ margin: 0 }}>
+              ₹{item.price * item.quantity}
+            </p>
+          </div>
+        ))
+      )}
 
-      <button
+      <hr style={{ borderColor: "rgba(255,255,255,0.2)" }} />
+
+      <div
         style={{
+          display: "flex",
+          justifyContent: "space-between",
           marginTop: "15px",
-          width: "100%",
-          padding: "10px",
-          backgroundColor: "black",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
+          fontWeight: "bold",
         }}
       >
+        <span>Total</span>
+        <span>₹{total}</span>
+      </div>
+
+      <PrimaryButton>
         Place Order
-      </button>
+      </PrimaryButton>
     </div>
   );
 }

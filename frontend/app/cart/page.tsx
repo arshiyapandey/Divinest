@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/features/cart/store/cartStore";
 import { useRouter } from "next/navigation";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function CartPage() {
   const {
@@ -21,12 +22,12 @@ export default function CartPage() {
     return (
       <div className="h-[60vh] flex flex-col items-center justify-center">
         <h1 className="text-xl font-semibold mb-2">Your cart is empty</h1>
-        <button
-          onClick={() => router.push("/shop")}
-          className="bg-black text-white px-6 py-2 rounded-lg"
+        <PrimaryButton
+        onClick={() => router.push("/shop")}
+        fullWidth={false}
         >
-          Continue Shopping
-        </button>
+      Continue Shopping
+      </PrimaryButton>
       </div>
     );
   }
@@ -96,13 +97,10 @@ export default function CartPage() {
       </div>
 
       {/* CHECKOUT BUTTON */}
-      <div className="mt-6 text-right">
-        <button
-          onClick={() => router.push("/checkout")}
-          className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition"
-        >
+      <div className="mt-6">
+        <PrimaryButton onClick={() => router.push("/checkout")}>
           Proceed to Checkout
-        </button>
+        </PrimaryButton>
       </div>
 
     </div>
