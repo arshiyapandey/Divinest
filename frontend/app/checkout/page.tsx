@@ -1,7 +1,12 @@
+"use client";
+
+import { useCartStore } from "@/features/cart/store/cartStore";
 import CheckoutForm from "@/features/checkout/CheckoutForm";
 import OrderSummary from "@/features/checkout/OrderSummary";
 
 export default function CheckoutPage() {
+  const { items } = useCartStore();
+
   return (
     <div style={{ padding: "40px" }}>
       <h1 style={{ fontSize: "24px", marginBottom: "30px" }}>
@@ -12,7 +17,7 @@ export default function CheckoutPage() {
         style={{
           display: "flex",
           gap: "40px",
-          alignItems: "flex-start", 
+          alignItems: "flex-start",
         }}
       >
         <div style={{ flex: 1 }}>
@@ -20,7 +25,7 @@ export default function CheckoutPage() {
         </div>
 
         <div style={{ flex: 1 }}>
-          <OrderSummary />
+          <OrderSummary items={items} />
         </div>
       </div>
     </div>
