@@ -14,6 +14,7 @@ type CartStore = {
   addToCart: (product: CartItem) => void;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
+  clearCart: () => void; // ✅ added
 };
 
 export const useCartStore = create<CartStore>()(
@@ -64,9 +65,11 @@ export const useCartStore = create<CartStore>()(
             )
             .filter((item) => item.quantity > 0),
         })),
+
+      clearCart: () => set({ items: [] }), // ✅ added
     }),
     {
-      name: "cart-storage", 
+      name: "cart-storage",
     }
   )
 );
