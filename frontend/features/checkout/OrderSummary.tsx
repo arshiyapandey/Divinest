@@ -8,23 +8,55 @@ type CartItem = {
   image: string;
 };
 
-export default function OrderSummary({ items }: { items: CartItem[] }) {
+type Props = {
+  items: CartItem[];
+  form: {
+    name: string;
+    email: string;
+    address: string;
+  };
+  clearCart: () => void;
+  router: any;
+};
+
+export default function OrderSummary({
+  items,
+  form,
+  clearCart,
+  router,
+}: Props) {
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
+  const handlePlaceOrder = () => {
+    if (!form.name || !form.email || !form.address) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    if (items.length === 0) {
+      alert("Cart is empty");
+      return;
+    }
+
+    clearCart();
+    router.push("/order-success");
+  };
+
   return (
     <div
       style={{
         border: "1px solid rgba(255,255,255,0.2)",
-        padding: "24px",
-        borderRadius: "12px",
+        padding: "32px", // ⬅️ more breathing space
+        borderRadius: "14px",
         backgroundColor: "rgba(255,255,255,0.05)",
         color: "#f5e9e2",
+        minWidth: "420px", // ⬅️ prevents squeezing
       }}
     >
-      <h2 style={{ marginBottom: "20px" }}>Order Summary</h2>
+      <h2 style={{ marginBottom: "24px" }}>Order Summary</h2>
 
       {items.length === 0 ? (
         <p style={{ opacity: 0.7 }}>Your cart is empty</p>
@@ -36,35 +68,33 @@ export default function OrderSummary({ items }: { items: CartItem[] }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: "15px",
+              marginBottom: "20px", // ⬅️ more spacing
               borderBottom: "1px solid rgba(255,255,255,0.1)",
-              paddingBottom: "10px",
+              paddingBottom: "12px",
             }}
           >
-            {/* LEFT */}
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
               <img
                 src={item.image}
                 alt={item.name}
                 style={{
-                  width: "50px",
-                  height: "50px",
+                  width: "55px",
+                  height: "55px",
                   objectFit: "cover",
-                  borderRadius: "6px",
+                  borderRadius: "8px",
                 }}
               />
 
               <div>
-                <p style={{ margin: 0, fontSize: "14px" }}>
+                <p style={{ margin: 0, fontSize: "15px" }}>
                   {item.name}
                 </p>
-                <p style={{ margin: 0, fontSize: "12px", opacity: 0.7 }}>
+                <p style={{ margin: 0, fontSize: "13px", opacity: 0.7 }}>
                   Qty: {item.quantity}
                 </p>
               </div>
             </div>
 
-            {/* RIGHT */}
             <p style={{ margin: 0 }}>
               ₹{item.price * item.quantity}
             </p>
@@ -72,23 +102,26 @@ export default function OrderSummary({ items }: { items: CartItem[] }) {
         ))
       )}
 
-      <hr style={{ borderColor: "rgba(255,255,255,0.2)" }} />
+      <hr style={{ borderColor: "rgba(255,255,255,0.2)", margin: "20px 0" }} />
 
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          marginTop: "15px",
+          marginTop: "10px",
           fontWeight: "bold",
+          fontSize: "16px",
         }}
       >
         <span>Total</span>
         <span>₹{total}</span>
       </div>
 
-      <PrimaryButton>
-        Place Order
-      </PrimaryButton>
+      <div style={{ marginTop: "20px" }}>
+        <PrimaryButton onClick={handlePlaceOrder}>
+          Place Order
+        </PrimaryButton>
+      </div>
     </div>
   );
 }

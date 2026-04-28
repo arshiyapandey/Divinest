@@ -1,25 +1,47 @@
-export default function CheckoutForm() {
-  return (
-    <div
-      style={{
-        border: "1px solid #ddd",
-        padding: "20px",
-        borderRadius: "10px",
-      }}
-    >
-      <h2 style={{ marginBottom: "15px" }}>Shipping Details</h2>
+type FormData = {
+  name: string;
+  email: string;
+  address: string;
+};
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <input placeholder="Name" style={inputStyle} />
-        <input placeholder="Email" style={inputStyle} />
-        <input placeholder="Address" style={inputStyle} />
-      </div>
+type Props = {
+  form: FormData;
+  setForm: React.Dispatch<React.SetStateAction<FormData>>;
+};
+
+export default function CheckoutForm({ form, setForm }: Props) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return (
+    <div className="max-w-lg space-y-4">
+      <input
+        className="w-full p-3 rounded-md border border-white/20 bg-transparent text-white placeholder:text-white/60"
+        name="name"
+        value={form.name}
+        onChange={handleChange}
+        placeholder="Name"
+      />
+
+      <input
+        name="email"
+        className="w-full p-3 rounded-md border border-white/20 bg-transparent text-white placeholder:text-white/60"
+        value={form.email}
+        onChange={handleChange}
+        placeholder="Email"
+      />
+
+      <input
+        name="address"
+        className="w-full p-3 rounded-md border border-white/20 bg-transparent text-white placeholder:text-white/60"
+        value={form.address}
+        onChange={handleChange}
+        placeholder="Address"
+      />
     </div>
   );
 }
-
-const inputStyle = {
-  padding: "10px",
-  border: "1px solid #ccc",
-  borderRadius: "5px",
-};
